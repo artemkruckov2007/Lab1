@@ -82,6 +82,44 @@ int countOdd(int arr[], int size)
     }
     return totalodd;
 }
+// extra ones
+int greaterthanX(int arr[], int size, int x)
+{
+    int greattotal = 0;
+    for (int i=0; i<size; i++)
+    {
+        if (arr[i]>x)
+        {
+            greattotal++;
+        }
+    }
+    return greattotal;
+}
+int lessthanX(int arr[], int size, int x)
+{
+    int lesstotal = 0;
+    for (int i=0; i<size; i++)
+    {
+        if (arr[i]<x)
+        {
+            lesstotal++;
+        }
+    }
+    return lesstotal;
+}
+int hasX(int arr[], int size, int x)
+{
+    bool flag = false;
+    for (int i=0; i<size; i++)
+    {
+        if (arr[i]==x)
+        {
+            flag = true;
+            break;
+        }
+    }
+    return flag;
+}
 int main()
 {   
     const int size =  10;
@@ -91,7 +129,32 @@ int main()
     {
         cin>>num[i];
     }
-    cout << "Sum: " << calculateSum(num, size) << "\n" << "Min: " << findMinimum(num, size) << "\n" << "Max: " << findMaximum(num, size) << "\n" << "Positives: " << countPositive(num, size) << "\n" << "Negatives: " << countNegative(num, size) << "\n" << "Evens: " << countEven(num, size) << "\n" << "Odds: " << countOdd(num, size) << endl;
+    int x;
+    cout<<"Enter number X:";
+    cin>>x;
+    bool hasXResult = hasX(num, size, x);
+    cout << "\nSum: " << calculateSum(num, size) 
+         << "\nMin: " << findMinimum(num, size) 
+         << "\nMax: " << findMaximum(num, size) 
+         << "\nPositives: " << countPositive(num, size) 
+         << "\nNegatives: " << countNegative(num, size) 
+         << "\nEvens: " << countEven(num, size) 
+         << "\nOdds: " << countOdd(num, size);
+         
+    cout << "\nGreater than "<<x<< ": " << greaterthanX(num, size, x)
+         << "\nLess than " <<x<< ": " << lessthanX(num, size, x) 
+         << "\nContains "<<x<<": ";
+    
+    if (hasXResult)
+    {
+        cout << "Yes"<<endl;
+    }
+    else
+    {
+        cout << "No"<<endl;
+    }
+
     cin.ignore(1000, '\n');
     cin.get();
+
 }
